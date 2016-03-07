@@ -3,3 +3,162 @@
 	Authors: Kyler Collins, Justin Lennox, Neal Raines, Neal Thacker
 	Description: Contains the formatting for fifteen.html
 */
+
+h1 
+{
+	text-align: center;
+	font-family: cursive;
+}
+
+p
+{
+	text-align: center;
+	font-family: cursive;
+	font-size: 14pt;
+}
+
+#puzzlearea
+{
+	margin-left: auto;
+	margin-right: auto;
+	width: 400px;
+	height: 400px;
+}
+
+div > div
+{
+	float: left;
+	width: 90px;
+	height: 90px;
+	border-style: solid;
+	border-width: 5px;
+	text-align: center;
+	font-family: cursive;
+	font-size: 40pt;
+}
+
+div > div:nth-child(1)
+{
+	background-image: url(background.jpg);
+	background-repeat: no-repeat;
+	overflow: hidden;
+}
+
+div > div:nth-child(2)
+{
+	background-image: url(background.jpg);
+	background-repeat: no-repeat;
+	overflow: hidden;
+	background-position: -100px 0px;
+}
+
+div > div:nth-child(3)
+{
+	background-image: url(background.jpg);
+	background-repeat: no-repeat;
+	overflow: hidden;
+	background-position: -200px 0px;
+}
+
+div > div:nth-child(4)
+{
+	background-image: url(background.jpg);
+	background-repeat: no-repeat;
+	overflow: hidden;
+	background-position: -300px 0px;
+}
+
+div > div:nth-child(5)
+{
+	background-image: url(background.jpg);
+	background-repeat: no-repeat;
+	overflow: hidden;
+	background-position: 0px -100px;
+}
+
+div > div:nth-child(6)
+{
+	background-image: url(background.jpg);
+	background-repeat: no-repeat;
+	overflow: hidden;
+	background-position: -100px -100px;
+}
+
+div > div:nth-child(7)
+{
+	background-image: url(background.jpg);
+	background-repeat: no-repeat;
+	overflow: hidden;
+	background-position: -200px -100px;
+}
+
+
+div > div:nth-child(8)
+{
+	background-image: url(background.jpg);
+	background-repeat: no-repeat;
+	overflow: hidden;
+	background-position: -300px -100px;
+}
+
+div > div:nth-child(9)
+{
+	background-image: url(background.jpg);
+	background-repeat: no-repeat;
+	overflow: hidden;
+	background-position: 0px -200px;
+}
+
+div > div:nth-child(10)
+{
+	background-image: url(background.jpg);
+	background-repeat: no-repeat;
+	overflow: hidden;
+	background-position: -100px -200px;
+}
+
+div > div:nth-child(11)
+{
+	background-image: url(background.jpg);
+	background-repeat: no-repeat;
+	overflow: hidden;
+	background-position: -200px -200px;
+}
+
+div > div:nth-child(12)
+{
+	background-image: url(background.jpg);
+	background-repeat: no-repeat;
+	overflow: hidden;
+	background-position: -300px -200px;
+}
+
+div > div:nth-child(13)
+{
+	background-image: url(background.jpg);
+	background-repeat: no-repeat;
+	overflow: hidden;
+	background-position: 0px -300px;
+}
+
+div > div:nth-child(14)
+{
+	background-image: url(background.jpg);
+	background-repeat: no-repeat;
+	overflow: hidden;
+	background-position: -100px -300px;
+}
+
+div > div:nth-child(15)
+{
+	background-image: url(background.jpg);
+	background-repeat: no-repeat;
+	overflow: hidden;
+	background-position: -200px -300px;
+}
+
+#shufflebutton
+{
+	font-family: cursive;
+	font-size: 14pt;
+}
