@@ -20,6 +20,9 @@ function shuffle() {
 	//array of all div child elements
 	var puzzleArray = document.getElementById("puzzlearea").getElementsByTagName("div");
 	
+	/* to get the left position of a child div use:
+		puzzleArray[<child number 0-14.].style.left' */
+	
 	var newLeftPosInt;
 	var newLeftPosString;
 	var newTopPosInt;
