@@ -35,43 +35,15 @@ function init() {
 	document.getElementById("shufflebutton").addEventListener("click", shuffle);
 	setSquareVariables();
 	addSquareListeners();
+	setSquarePositions();
 }
 
 function shuffle() {
-	//array of all div child elements
-
-	/* to get the left position of a child div use:
-		puzzleArray[<child number 0-14.].style.left' */
-	var newLeftPosInt;
-	var newLeftPosString;
-	var newTopPosInt;
-	var newTopPosString;
-
-	for (i = 0; i < 1000; i++)
+	var i;
+	for(i = 0; i < 500; i++)
 	{
-		var side = Math.floor((Math.random() * 4) + 1);
-		//1 = top, 2 = right, 3 = bottom, 4 = left
-
-		if (side == 1 && (0 <= (emptyTop - 100) <= 300))
-		{
-			emptyTop = emptyTop - 100;
-			//code to find and swap element above empty space here
-		}
-		else if (side == 2 && (0 <= (emptyLeft + 100) <= 300))
-		{
-			emptyLeft = emptyLeft + 100;
-			//code to find and swap element to the right of empty space here
-		}
-		else if (side == 3 && (0 <= (emptyTop + 100) <= 300))
-		{
-			emptyTop = emptyTop + 100;
-			//code to find and swap element below empty space here
-		}
-		else if (side == 4 && (0 <= (emptyLeft - 100) <= 300))
-		{
-			emptyLeft = emptyLeft - 100;
-			//code to find and swap element to the left of empty space here
-		}
+		var square = Math.floor(Math.random() * 15);
+		puzzleArray[square].click();
 	}
 }
 
@@ -92,23 +64,25 @@ function ClickSquare(squareNumber){
 
 function highlight(squareNumber){
 	puzzleArray[squareNumber - 1].style.borderColor = "red";
+	puzzleArray[squareNumber - 1].style.color = "red";
 }
 
 function unhighlight(squareNumber){
 	puzzleArray[squareNumber - 1].style.borderColor = "black";
+	puzzleArray[squareNumber - 1].style.color = "black";
 }
 
 function move(squareNumber){
 	if(CheckNeighborEmpty(squareNumber)){
 		//create temp var for position
-		var squareLeft = puzzleArray[squareNumber - 1].style.left;
-		var squareTop = puzzleArray[squareNumber - 1].style.top;
+		var squareLeft = parseInt(puzzleArray[squareNumber - 1].style.left);
+		var squareTop = parseInt(puzzleArray[squareNumber - 1].style.top);
 		//alert(puzzleArray[squareNumber - 1].style.left);
-		
+
 		//move to empty position
 		puzzleArray[squareNumber - 1].style.left = emptyLeft + "px";
 		puzzleArray[squareNumber - 1].style.top = emptyTop + "px";
-		
+
 		//update where empty position is
 		emptyLeft = squareLeft;
 		emptyTop = squareTop;
@@ -116,11 +90,29 @@ function move(squareNumber){
 }
 
 function CheckNeighborEmpty(squareNumber){
-	if((!puzzleArray[squareNumber] && squareNumber < 16) || (!puzzleArray[squareNumber - 2] && squareNumber > 1) || (!puzzleArray[squareNumber - 5] && squareNumber > 4) || (!puzzleArray[squareNumber + 3] && squareNumber < 13)){ //Checks the square to the right
-		return true;
-	}else{
-		return false;
+
+	//check if in same column
+	if(parseInt(puzzleArray[squareNumber - 1].style.left) == emptyLeft)
+	{
+		var distanceTop = Math.abs(parseInt(puzzleArray[squareNumber - 1].style.top) - emptyTop)
+		//check if 100 away row-wise
+		if(distanceTop <= 100)
+		{
+			return true;
+		}
 	}
+
+	//check if same row
+	if(parseInt(puzzleArray[squareNumber - 1].style.top) == emptyTop)
+	{
+		var distanceLeft = Math.abs(parseInt(puzzleArray[squareNumber - 1].style.left) - emptyLeft)
+		//check if 100 away column-wise
+		if(distanceLeft <= 100)
+		{
+			return true;
+		}
+	}
+
 }
 
 function setSquareVariables(){
@@ -276,4 +268,16 @@ function addSquareListeners(){
 	square15.addEventListener("click", function(){
 		ClickSquare(15);
 	});
+}
+
+function setSquarePositions(){
+	var i;
+	var topPositions = [0, 0, 0, 0, 100, 100, 100, 100, 200, 200, 200, 200, 300, 300, 300];
+	var leftPositions = [0, 100, 200, 300, 0, 100, 200, 300, 0, 100, 200, 300, 0, 100, 200];
+	for(i = 0; i < puzzleArray.length; i++)
+	{
+		puzzleArray[i].style.top = topPositions[i] + "px";
+		puzzleArray[i].style.left = leftPositions[i] + "px";
+	}
+
 }
