@@ -100,9 +100,18 @@ function unhighlight(squareNumber){
 
 function move(squareNumber){
 	if(CheckNeighborEmpty(squareNumber)){
+		//create temp var for position
+		var squareLeft = puzzleArray[squareNumber - 1].style.left;
+		var squareTop = puzzleArray[squareNumber - 1].style.top;
+		//alert(puzzleArray[squareNumber - 1].style.left);
+		
 		//move to empty position
-		//puzzleArray[squareNumber - 1].style. = "px";
-		alert("move");
+		puzzleArray[squareNumber - 1].style.left = emptyLeft + "px";
+		puzzleArray[squareNumber - 1].style.top = emptyTop + "px";
+		
+		//update where empty position is
+		emptyLeft = squareLeft;
+		emptyTop = squareTop;
 	}
 }
 
