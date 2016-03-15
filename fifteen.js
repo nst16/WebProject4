@@ -27,8 +27,6 @@ var puzzleArray;
 
 window.addEventListener("load", init);
 
-
-
 function init() {
 	//adds listener to shuffle button
 	puzzleArray = document.getElementById("puzzlearea").getElementsByTagName("div");
@@ -38,6 +36,7 @@ function init() {
 	setSquarePositions();
 }
 
+//shuffles the squares
 function shuffle() {
 	var i;
 	for(i = 0; i < 500; i++)
@@ -47,37 +46,33 @@ function shuffle() {
 	}
 }
 
-
+//functions to highlight moused-over square
 function MouseOverSquare(squareNumber){
 	if(CheckNeighborEmpty(squareNumber)){
 		highlight(squareNumber);
 	}
 }
-
 function MouseOffSquare(squareNumber){
 	unhighlight(squareNumber);
 }
-
-function ClickSquare(squareNumber){
-	move(squareNumber);
-}
-
 function highlight(squareNumber){
 	puzzleArray[squareNumber - 1].style.borderColor = "red";
 	puzzleArray[squareNumber - 1].style.color = "red";
 }
-
 function unhighlight(squareNumber){
 	puzzleArray[squareNumber - 1].style.borderColor = "black";
 	puzzleArray[squareNumber - 1].style.color = "black";
 }
 
+//functions to move square
+function ClickSquare(squareNumber){
+	move(squareNumber);
+}
 function move(squareNumber){
 	if(CheckNeighborEmpty(squareNumber)){
 		//create temp var for position
 		var squareLeft = parseInt(puzzleArray[squareNumber - 1].style.left);
 		var squareTop = parseInt(puzzleArray[squareNumber - 1].style.top);
-		//alert(puzzleArray[squareNumber - 1].style.left);
 
 		//move to empty position
 		puzzleArray[squareNumber - 1].style.left = emptyLeft + "px";
@@ -115,6 +110,7 @@ function CheckNeighborEmpty(squareNumber){
 
 }
 
+//set DOM elements to global variables
 function setSquareVariables(){
 	square1 = document.getElementById("puzzlearea").getElementsByTagName("div")[0];
 	square2 = document.getElementById("puzzlearea").getElementsByTagName("div")[1];
